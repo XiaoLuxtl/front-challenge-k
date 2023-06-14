@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import Moveable from "react-moveable";
+import { Guideline } from "react-moveable";
 
 import response from "./mocks/response.json";
 
@@ -276,7 +277,7 @@ const Component = ({
           height: height,
           backgroundImage: "url(" + image + ")",
           backgroundPosition: "center",
-          backgroundSize: "cover",
+          backgroundSize: objectFit,
           backgroundRepeat: "no-repeat",
           backgroundColor: color,
         }}
