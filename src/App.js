@@ -113,8 +113,8 @@ const App = () => {
         style={{
           position: "relative",
           background: "black",
-          height: "80vh",
-          width: "80vw",
+          height: "100%",
+          width: "100%",
         }}
       >
         {moveableComponents.map((item, index) => (
@@ -282,7 +282,24 @@ const Component = ({
         }}
         onClick={() => setSelected(id)}
       >
-        <button onClick={() => removeMoveable(id)}>X</button>
+        <button
+          onClick={() => removeMoveable(id)}
+          style={{
+            backgroundColor: "rgba(255, 0, 0, 0.2)",
+            color: "white",
+            fontWeight: 600,
+            border: "2px solid red",
+            borderRadius: "10%",
+            width: "30px",
+            height: "30px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+          }}
+        >
+          X
+        </button>
       </div>
 
       <Moveable
