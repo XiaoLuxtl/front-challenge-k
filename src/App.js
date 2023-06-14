@@ -7,7 +7,10 @@ const App = () => {
   const [moveableComponents, setMoveableComponents] = useState([]);
   const [selected, setSelected] = useState(null);
 
-  // Obtener imagenes
+  /**
+   * fetchImage: Función asincrónica que obtiene una imagen de origen de datos.
+   * Retorna la URL de la imagen obtenida.
+   */
   const fetchImage = async () => {
     try {
       // online
@@ -25,6 +28,9 @@ const App = () => {
     }
   };
 
+  /**
+   * Agrega un nuevo componente moveable a la lista.
+   */
   const addMoveable = async () => {
     // Create a new moveable component and add it to the array
     const COLORS = ["red", "blue", "yellow", "green", "purple"];
@@ -46,6 +52,12 @@ const App = () => {
     ]);
   };
 
+  /**
+   * updateMoveable: Actualiza las propiedades de un componente moveable con el ID especificado.
+   * @param {number} id - El ID del componente a actualizar.
+   * @param {object} newComponent - El objeto con las nuevas propiedades del componente.
+   * @param {boolean} [updateEnd=false] - Indica si se trata de una actualización al finalizar.
+   */
   const updateMoveable = (id, newComponent, updateEnd = false) => {
     const updatedMoveables = moveableComponents.map((moveable, i) => {
       if (moveable.id === id) {
@@ -56,7 +68,10 @@ const App = () => {
     setMoveableComponents(updatedMoveables);
   };
 
-  // Eliminar
+  /**
+   * Elimina un componente moveable de la lista.
+   * @param {number} id - El ID del componente a eliminar.
+   */
   const removeMoveable = (id) => {
     const updatedMoveables = moveableComponents.filter(
       (moveable) => moveable.id !== id
@@ -64,6 +79,11 @@ const App = () => {
     setMoveableComponents(updatedMoveables);
   };
 
+  /**
+   * handleResizeStart: Maneja el evento de inicio de redimensionamiento de un componente moveable.
+   * @param {number} index - El índice del componente moveable.
+   * @param {object} e - El evento de inicio de redimensionamiento.
+   */
   const handleResizeStart = (index, e) => {
     console.log("e", e.direction);
     // Check if the resize is coming from the left handle
@@ -148,6 +168,10 @@ const Component = ({
   let parent = document.getElementById("parent");
   let parentBounds = parent?.getBoundingClientRect();
 
+  /**
+   * onResize: Maneja el evento de redimensionamiento de un componente moveable.
+   * @param {object} e - El evento de redimensionamiento.
+   */
   const onResize = async (e) => {
     // ACTUALIZAR ALTO Y ANCHO
     let newWidth = e.width;
@@ -201,6 +225,10 @@ const Component = ({
     });
   };
 
+  /**
+   * onResizeEnd: Maneja el evento de finalización de redimensionamiento de un componente moveable.
+   * @param {object} e - El evento de finalización de redimensionamiento.
+   */
   const onResizeEnd = async (e) => {
     let newWidth = e.lastEvent?.width;
     let newHeight = e.lastEvent?.height;
