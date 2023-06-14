@@ -56,6 +56,14 @@ const App = () => {
     setMoveableComponents(updatedMoveables);
   };
 
+  // Eliminar
+  const removeMoveable = (id) => {
+    const updatedMoveables = moveableComponents.filter(
+      (moveable) => moveable.id !== id
+    );
+    setMoveableComponents(updatedMoveables);
+  };
+
   const handleResizeStart = (index, e) => {
     console.log("e", e.direction);
     // Check if the resize is coming from the left handle
@@ -94,6 +102,7 @@ const App = () => {
             {...item}
             key={index}
             updateMoveable={updateMoveable}
+            removeMoveable={removeMoveable}
             handleResizeStart={handleResizeStart}
             setSelected={setSelected}
             isSelected={selected === item.id}
@@ -108,6 +117,7 @@ export default App;
 
 const Component = ({
   updateMoveable,
+  removeMoveable,
   top,
   left,
   width,
@@ -243,7 +253,9 @@ const Component = ({
           backgroundColor: color,
         }}
         onClick={() => setSelected(id)}
-      />
+      >
+        <button onClick={() => removeMoveable(id)}>X</button>
+      </div>
 
       <Moveable
         target={isSelected && ref.current}
