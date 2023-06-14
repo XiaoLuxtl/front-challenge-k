@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import Moveable from "react-moveable";
-import { Guideline } from "react-moveable";
+import "./styles2.css";
 
 import response from "./mocks/response.json";
 
@@ -107,8 +107,10 @@ const App = () => {
   };
 
   return (
-    <main style={{ height: "100vh", width: "100vw" }}>
-      <button onClick={addMoveable}>Add Moveable1</button>
+    <main style={{ height: "calc(100vh - 40px)", width: "100vw" }}>
+      <header className="header">
+        <button onClick={addMoveable}>Add 1 Moveable</button>
+      </header>
       <div
         id="parent"
         style={{
